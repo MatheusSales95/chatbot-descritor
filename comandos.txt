@@ -1,0 +1,13 @@
+
+
+python test_db.py
+python test_search.py
+python -m src.pipeline.train_word2vec
+python -m src.pipeline.visualize_dendrogram
+uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn src.api.main:app --reload --reload-dir src --host 0.0.0.0 --port 8000
+http://localhost:8000/docs#/default/chat_endpoint_api_v1_chat_post
+streamlit run dashboard.py
+sudo docker compose up -d db
+
+python -m data.models.visualize_intents

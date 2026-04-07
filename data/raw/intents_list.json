@@ -1,0 +1,63 @@
+{
+    "intents": [
+        {
+            "intent": "ranking_eventos",
+            "description": "Lista eventos ordenados por tamanho (maiores ou menores).",
+            "examples": [
+                "Quais os maiores focos de incêndio?",
+                "Me mostre o top 3 eventos.",
+                "Ranking dos piores incêndios.",
+                "Listar as maiores queimadas.",
+                "Qual foi o maior evento registrado?",
+                "Quais os eventos mais críticos?",
+                "Quais os menores eventos?",
+                "Me mostre os focos pequenos.",
+                "Listar as menores queimadas.",
+                "Ranking dos eventos menos críticos.",
+                "Quais foram os focos com área mínima?",
+                "Top 5 menores eventos."
+            ]
+        },
+        {
+            "intent": "count_events",
+            "description": "Foca EXCLUSIVAMENTE em quantidade total: quantos, número de, contagem, total.",
+            "examples": [
+                "Quantos eventos de fogo estão ativos neste momento?",
+                "Qual o número total de ocorrências detectadas?",
+                "Faça a contagem de incêndios registrados em São Paulo.",
+                "Existem quantos registros de queimadas no sistema?",
+                "Me diga a quantidade exata de focos agrupados.",
+                "Qual a frequência de eventos na última semana?",
+                "Quantos incidentes de fogo foram computados?",
+                "Numero de queimadas catalogadas no banco.",
+                "Há muitos eventos ativos monitorados agora?",
+                "Totalize as ocorrências de fogo encontradas.",
+                "Quantos eventos temos no Brasil inteiro?",
+                "Contagem total de focos no país."
+            ]
+        },
+        {
+            "intent": "calculate_area",
+            "description": "Foca em medição espacial: soma, total, dimensão, área dos eventos (plural).",
+            "examples": [
+                "Qual a área total queimada em hectares?",
+                "Calcule a extensão territorial afetada pelo fogo.",
+                "Qual a área dos eventos ativos?",
+                "Me diga a área dos eventos detectados.",
+                "Qual a área somada dos focos?",
+                "Área de eventos ativos.",
+                "Qual o tamanho da superfície destruída na Amazônia?",
+                "Mensurar a soma da área de todos os eventos.",
+                "Quantos quilômetros quadrados foram devastados?",
+                "Me dê a dimensão da zona atingida pelas queimadas.",
+                "Qual a geometria total da área prejudicada?",
+                "Somar a área acumulada dos incêndios ativos.",
+                "Quantos hectares de floresta foram perdidos?",
+                "Qual a área total de eventos ativos no Brasil?",
+                "Soma da área queimada em todo o país.",
+                "Qual a extensão nacional afetada?",
+                "Total de área queimada no território brasileiro."
+            ]
+        }
+    ]
+}

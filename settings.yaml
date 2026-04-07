@@ -1,0 +1,56 @@
+app:
+  name: "descrEVE Fogo Bot"
+  version: "2.1.0"
+  description: "Assistente de monitoramento de focos de incêndio e dados geoespaciais."
+
+database:
+  schemas:
+    - "evento_fogo"
+    - "public"
+
+nlp:
+  model_path: "data/models/"
+  spacy_base: "pt_core_news_lg"
+  
+  word2vec:
+    vector_size: 300
+    window: 5
+    min_count: 1
+    epochs: 30
+  
+  domain_stopwords:
+    - "gostaria"
+    - "saber"
+    - "por"
+    - "favor"
+    - "sobre"
+  
+  # Mapeamento para normalização antes do Word2Vec
+  synonyms:
+    "fogo": ["incendio", "queimada", "foco", "calor"]
+    "regiao": ["area", "local", "municipio", "estado"]
+    "satelite": ["sensor", "equipamento"]
+
+
+clustering:
+  n_clusters: 5  # Ajuste este valor baseando-se no método Elbow ou Silhueta do seu notebook
+  method: "kmeans" # ou "agglomerative"
+
+visualization:
+  tsne:
+    n_components: 2
+    # Perplexidade aumentada para 40 para tentar agrupar melhor os outliers globais.
+    # Se os grupos ainda ficarem muito dispersos, tente 50.
+    perplexity: 40 
+    n_iter: 1000
+    random_state: 42
+    init: "pca"           # Inicialização PCA garante mais estabilidade que 'random'
+    learning_rate: "auto"
+  
+  plot:
+    title: "Clusterização de Documentos - descrEVE (Interativo)"
+    hover_text_limit: 300 # Limite de caracteres ao passar o mouse para facilitar a leitura
+    height: 700
+
+logging:
+  level: "INFO"

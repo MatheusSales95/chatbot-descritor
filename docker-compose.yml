@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Serviço de Banco de Dados (PostGIS)
+  db:
+    image: postgis/postgis:17-3.5
+    container_name: descreve_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-asdf}
+      POSTGRES_DB: ${DB_NAME:-postgres}
+    ports:
+      - "5433:5432"
+    volumes:
+      # Persistência: Salva os dados na pasta 'postgres_data' do seu PC
+      - ./postgres_data:/var/lib/postgresql/data
+      # Importação: Joga o arquivo de dump para dentro do container temporariamente
+      - ./data/raw/backup.dump:/tmp/backup.dump
+
+  # Serviço da API (Python)
+  app:
+    build: .
+    container_name: descreve_api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mapeia modelos e código para facilitar atualizações
+      - ./data:/app/data
+      - ./src:/app/src
+    environment:
+      DB_HOST: db
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-asdf}
+      DB_NAME: ${DB_NAME:-postgres}
