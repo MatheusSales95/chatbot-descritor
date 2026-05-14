@@ -56,19 +56,24 @@ def generate_confusion_matrix():
     print(classification_report(y_true, y_pred, labels=labels, zero_division=0))
 
     # 7. Plotar Gráfico (Heatmap)
-    plt.figure(figsize=(10, 8))
+    fig, ax = plt.subplots(figsize=(12, 10))
     sns.heatmap(
         cm,
         annot=True,
         fmt='d',
         xticklabels=labels,
         yticklabels=labels,
-        cmap='Blues'
+        cmap='Blues',
+        annot_kws={"size": 24},
+        ax=ax,
     )
 
-    plt.title('Matriz de Confusão: Intenções Reais vs Preditas')
-    plt.ylabel('Verdadeiro')
-    plt.xlabel('Predito')
+    ax.set_title('Matriz de Confusão: Intenções Reais vs Preditas', fontsize=24, pad=20)
+    ax.set_ylabel('Verdadeiro', fontsize=24, labelpad=12)
+    ax.set_xlabel('Predito', fontsize=24, labelpad=12)
+    ax.tick_params(axis='x', labelsize=24)
+    ax.tick_params(axis='y', labelsize=24)
+    ax.collections[0].colorbar.ax.tick_params(labelsize=24)
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
     plt.tight_layout()
